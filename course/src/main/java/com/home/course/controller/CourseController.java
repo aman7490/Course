@@ -15,6 +15,10 @@ import com.home.course.entity.Course;
 import com.home.course.repository.MyRepository;
 import com.home.course.services.MyService;
 
+/**
+ * @author amandeep.singh
+ *
+ */
 @RestController
 public class CourseController {
 
