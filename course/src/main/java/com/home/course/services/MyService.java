@@ -3,11 +3,14 @@ package com.home.course.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import com.home.course.dao.DAO;
 import com.home.course.entity.Course;
+import com.home.course.entity.Student;
 @Service
+
 public class MyService {
 
 	@Autowired
@@ -62,5 +65,13 @@ public class MyService {
 		
 		return "{  \"results\" : \"Zero record in database !!\" }"; 
 	}
+
+	public Student savestudentrecord(Student student) {
+		// TODO Auto-generated method stub
+		
+		return dao.savestudrecord(student);
+	}
+
+	
 
 }

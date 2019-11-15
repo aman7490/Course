@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.home.course.entity.Course;
+import com.home.course.entity.Student;
 import com.home.course.repository.MyRepository;
 import com.home.course.services.MyService;
 
@@ -24,50 +25,41 @@ public class CourseController {
 
 	@Autowired
 	MyService service;
-	MyRepository repository;
-	
-	//@PostMapping(value="/save", method = RequestMethod.POST)
-	
-	@RequestMapping(value= "/save", method = RequestMethod.POST)
+
+	// @PostMapping(value="/save", method = RequestMethod.POST) // old way
+
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public Course gotoserviceforsave(@RequestBody Course course) {
 		return service.gotodaoforsave(course);
 	}
-	
-	@RequestMapping (value="/get", method = RequestMethod.GET)
-	public List<Course> gotoserviceforget(){
-		
+
+	@RequestMapping(value = "/get", method = RequestMethod.GET)
+	public List<Course> gotoserviceforget() {
 		List<Course> emptylist = new ArrayList<Course>();
-		
 		emptylist = service.getall();
-		
 		return emptylist;
-		
 	}
-	
-	
-	@RequestMapping (value="/update/{id}", method = RequestMethod.PUT) 
-	public Course gotoserviceforupdate(@RequestBody Course course, @PathVariable int id){
-		
-	//	Course toupdate = new Course(id);
-	
-		return service.updatefromid(course,id);
-		
+
+	@RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
+	public Course gotoserviceforupdate(@RequestBody Course course, @PathVariable int id) {
+		// Course toupdate = new Course(id);
+		return service.updatefromid(course, id);
 	}
-	
-	@RequestMapping (value="/delete/{id}", method = RequestMethod.DELETE,produces = MediaType.APPLICATION_JSON_VALUE)
+
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public String gotoservicefordelete(@RequestBody Course course, @PathVariable int id) {
-		return service.deleterecord(course,id);
-		//return "{  \"results\" : \"Record deleted successfully !!\" }"; 
+		return service.deleterecord(course, id);
+		// return "{ \"results\" : \"Record deleted successfully !!\" }";
+	}
+	@RequestMapping(value = "/savestudent", method= RequestMethod.POST)
+	public Student savestudent(@RequestBody Student student) {
+		return service.savestudentrecord(student);
+		
 	}
 	
 	
 	
 	
 	
-	
-	
-	
-	
-	
-	
+
 }
