@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.home.course.entity.Course;
 import com.home.course.entity.Student;
+import com.home.course.exception.CourseNotFoundException;
 import com.home.course.repository.MyRepository;
 import com.home.course.services.MyService;
 
@@ -34,16 +35,29 @@ public class CourseController {
 	}
 
 	@RequestMapping(value = "/get", method = RequestMethod.GET)
-	public List<Course> gotoserviceforget() {
+	public List<Course> gotoserviceforget() throws CourseNotFoundException {
 		List<Course> emptylist = new ArrayList<Course>();
+		
 		emptylist = service.getall();
+		
+		if(emptylist.isEmpty()) {
+			throw new CourseNotFoundException("List is empty");
+		}
+		
 		return emptylist;
 	}
 
 	@RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
-	public Course gotoserviceforupdate(@RequestBody Course course, @PathVariable int id) {
+	public Course gotoserviceforupdate(@RequestBody Course course, @PathVariable int id) throws CourseNotFoundException {
 		// Course toupdate = new Course(id);
-		return service.updatefromid(course, id);
+		Course course2 = new Course();
+		course2 = service.updatefromid(course, id);
+		
+		if(course2 == null) {
+			throw new CourseNotFoundException("Record not available in database");
+		}
+		
+		return course2;
 	}
 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
