@@ -17,7 +17,7 @@ public @ResponseBody ExceptionResponse handlecoursenotfoundexceptionfunc(final C
 	
 	ExceptionResponse exceptionResponse = new ExceptionResponse();
 	exceptionResponse.setMessage(courseNotFoundException.getMessage());
-	exceptionResponse.setMessageDescription("Record is not available or empty in database");
+//	exceptionResponse.setMessageDescription("Record is not available or empty in database");
 	exceptionResponse.setRequesturi(httpServletRequest.getRequestURI());
 	return exceptionResponse;
 	
