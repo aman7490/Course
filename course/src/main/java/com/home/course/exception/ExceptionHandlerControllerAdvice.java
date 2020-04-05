@@ -22,4 +22,7 @@ public @ResponseBody ExceptionResponse handlecoursenotfoundexceptionfunc(final C
 	return exceptionResponse;
 	
 }
+
+
+
 }

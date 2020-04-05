@@ -8,6 +8,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 /**
  * @author amandeep.singh
  *
+ *@SpringBootApplication is a combination of three annotations 
+ *@Configuration (used for Java-based configuration), 
+ *@ComponentScan (used for component scanning), and 
+ *@EnableAutoConfiguration (used to enable auto-configuration in Spring Boot)
  */
 @SpringBootApplication
 @EnableSwagger2
